@@ -15,7 +15,7 @@ pipeline {
         stage("Build image") {
             steps {
                 script {
-                    myapp = docker.build("dockkunal/hello:${env.BUILD_ID}")
+                    sh "docker build -t dockkunal/hello:${env.BUILD_ID} ."
                 }
             }
         }
