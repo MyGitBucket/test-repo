@@ -22,10 +22,12 @@ pipeline {
         stage("Push image") {
             steps {
                 script {
-                    docker.withRegistry('', 'dockerhub') {
-                            myapp.push("latest")
-                            myapp.push("${env.BUILD_ID}")
+                    withCredentials( \
+                                 [string(credentialsId: 'dockerhub',\
+                                 variable: 'dockerhub')]) {
+                        sh "docker login -u dockkunal -p ${dockerhub}"
                     }
+                    sh "docker push dockkunal/jenkins-pipeline:${env.BUILD_ID}"
                 }
             }
         }        
