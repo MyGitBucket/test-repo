@@ -2,9 +2,9 @@ pipeline {
     agent any
     environment {
         PROJECT_ID = 'extreme-torch-358604'
-        CLUSTER_NAME = '<<Your GKE Cluster Name>>'
-        LOCATION = '<<Your GKE Cluster Location>>'
-        CREDENTIALS_ID = 'multi-k8s'
+        CLUSTER_NAME = 'jenkins'
+        LOCATION = 'us-west4-b'
+        CREDENTIALS_ID = 'kubernetes'
     }
     stages {
         stage("Checkout code") {
